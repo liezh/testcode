@@ -1,0 +1,20 @@
+#include<stdio.h>
+#include<math.h>
+
+void main()
+{
+	double P,F,i; //P是本金，F是收益，i年利率
+	int N,W; //是期限
+	printf("**********复利计算机*********\n");
+	printf("请输入本金：\n");
+	scanf("%lf",&P);
+	printf("请输入年利率\n");
+	scanf("%lf",&i);
+	printf("请输入年限：\n");
+	scanf("%d",&N);
+	printf("请输入复利次数：\n");
+	scanf("%d",&W);
+	i=pow(1+i/W,W)-1;
+	F=P*pow((i+1),N);
+	printf("结果为：%lf\n",F);
+}
