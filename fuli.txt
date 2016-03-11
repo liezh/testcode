@@ -1,0 +1,70 @@
+#include<stdio.h>
+#include<math.h>
+
+double danli(double i,int N,double P)
+{
+	double nlx,F;
+	nlx = P*i;
+	F = nlx*N + P;
+	return F;
+
+}
+
+double fuli(double i,int W,int N,double P)
+{
+	double F;
+	i=pow(1+i/W,W)-1;
+	F=P*pow((i+1),N);
+	return F;
+}
+
+double gusuan(double i,int W,int N,double F)
+{
+	double P;
+	i = pow(1+i/W,W)-1;
+	P = F/pow((i+1),N);
+	return P;
+}
+
+void main()
+{
+	double P,F1,F,i; //P是本金，F是收益，i年利率
+	int N,W,ch2; //是期限
+	printf("**********复利计算机*********\n");
+
+	printf("------1--为复利    2--为单利    3--估算------");
+	scanf("%d",&ch2);
+	switch(ch2){
+	case 1:
+		printf("请输入本金：\n");
+		scanf("%lf",&P);
+		printf("请输入年利率\n");
+		scanf("%lf",&i);
+		printf("请输入年限：\n");
+		scanf("%d",&N);
+		printf("请输入复利次数：\n");
+		scanf("%d",&W);
+		F1 = fuli(i,W,N,P); break;
+	case 2:
+		printf("请输入本金：\n");
+		scanf("%lf",&P);
+		printf("请输入年利率\n");
+		scanf("%lf",&i);
+		printf("请输入年限：\n");
+		scanf("%d",&N);
+		F1 = danli(i,N,P); break;
+	case 3:
+		printf("请输入本利\n");
+		scanf("%lf",&F);
+		printf("请输入年利率\n");
+		scanf("%lf",&i);
+		printf("请输入年限：\n");
+		scanf("%d",&N);
+		printf("请输入复利次数：\n");
+		scanf("%d",&W);
+		F1 = gusuan(i,W,N,F);
+		break;
+	}
+	
+	printf("结果为：%lf\n",F1);
+}
